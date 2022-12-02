@@ -1,0 +1,17 @@
+Flask
+gunicorn
+tensorflow==2.1.0
+numpy
+nibabel
+pillow
+six
+scikit-learn
+scikit-image
+webcolors
+plotly
+pandas
+matplotlib
+h5py>=2.9
+fslpy
+gast==0.2.2
+statsmodels
