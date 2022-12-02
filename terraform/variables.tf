@@ -7,6 +7,7 @@ variable "user" {
 }
 
 locals {
+
     project_name = "segtutorial${random_id.id.hex}" #enter your project name
     project = "${local.project_name}"
     region = "us-east1"
@@ -22,18 +23,8 @@ locals {
 
 }
 
-variable "gcp_service_list" {
-
-  description ="The list of apis necessary for the project"
-  type = list(string)
-  default = [
-    "compute.googleapis.com",
-    "containerregistry.googleapis.com",
-    "run.googleapis.com"  
-  ]
-}
 
 resource "random_id" "id" {
-    byte_length = 4
+    byte_length = 2
 }
 

@@ -38,7 +38,6 @@ resource "google_storage_bucket" "storage_output_bucket" {
     name = local.output_bucket
     location = "US"
     force_destroy = true
-<<<<<<< HEAD
 
     depends_on = [
         google_project_iam_member.project_owner
@@ -110,7 +109,7 @@ resource "google_cloud_run_service" "default" {
   depends_on = [
     google_project.project,
     google_project_service.cloud_run_service,
-    #null_resource.app_container, #uncomment after fixed
+    null_resource.app_container, 
   ]
 }
 
@@ -132,80 +131,4 @@ resource "null_resource" "app_container" {
 resource "google_pubsub_topic" "default" {
     name = "bst-pubsub-topic"
 }
-=======
-
-    depends_on = [
-        google_project_iam_member.project_owner
-    ]
-}
-
-resource "google_storage_bucket" "storage_data_bucket" {
-    name = local.data_bucket
-    location = "US"
-    force_destroy = true
->>>>>>> 9a965f04e28a0b104823031470c971a31ca032fa
-
-    depends_on = [
-        google_project_iam_member.project_owner
-    ]
-}
-
-
-<<<<<<< HEAD
-resource "google_project_service_identity" "pubsub_agent" {
-  provider = google-beta
-  project  = local.project_name
-  service  = "pubsub.googleapis.com"
-}
-
-resource "google_project_iam_binding" "project_token_creator" {
-  project = local.project_name
-  role    = "roles/iam.serviceAccountTokenCreator"
-  members = ["serviceAccount:${google_project_service_identity.pubsub_agent.email}"]
-=======
-resource "google_project_service" "cloud_registry_service" {
-  service = "containerregistry.googleapis.com"
-  disable_dependent_services = true
-
-  depends_on = [
-    google_project.project,
-  ]
->>>>>>> 9a965f04e28a0b104823031470c971a31ca032fa
-}
-
-#create an the image from app directory.
-resource "null_resource" "app_container" {
-
-    triggers = {
-        always_run = timestamp()
-    }
-    provisioner "local-exec" {
-        #command = "(cd ../app && ./build.sh && IMAGE_URI=${local.image_uri} ./push.sh)"
-        command = "docker build -t ${local.image_uri} ../app/ && docker push ${local.image_uri}"
-    }
-<<<<<<< HEAD
-  }
-  depends_on = [google_cloud_run_service.default]
-}
-
-data "google_storage_project_service_account" "gcs_account" {
-  project = local.project_name
-}
-
-resource "google_pubsub_topic_iam_binding" "binding" {
-  topic   = google_pubsub_topic.default.name
-  role    = "roles/pubsub.publisher"
-  members = ["serviceAccount:${data.google_storage_project_service_account.gcs_account.email_address}"]
-}
-
-resource "google_storage_notification" "notification" {
-  bucket         = google_storage_bucket.storage_input_bucket.name
-  payload_format = "JSON_API_V1"
-  topic          = google_pubsub_topic.default.id
-  depends_on     = [google_pubsub_topic_iam_binding.binding]
-=======
-    depends_on = [
-        google_project.project
-    ]
->>>>>>> 9a965f04e28a0b104823031470c971a31ca032fa
-}
+    
