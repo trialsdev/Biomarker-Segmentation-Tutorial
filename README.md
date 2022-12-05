@@ -16,10 +16,10 @@ The following tools are required to be installed in your local machine in order 
 
 ## Run Code ##
 
-'''
+```
 github clone 
 cd terraform
 terraform init
 terraform plan
 terraform apply
-'''
+```
