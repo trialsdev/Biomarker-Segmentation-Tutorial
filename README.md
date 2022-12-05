@@ -4,6 +4,12 @@ This repository contains code that helps you to create the following infrastruct
 
 <img src = "https://user-images.githubusercontent.com/85404022/205371247-a677c4c3-1596-4b09-aebd-aa176703d24c.png" width = 800, height = 550></img>
 
+## Billable Resources ##
+
+1. Google Cloud Run
+2. Google Cloud Storage
+3. Pub/Sub
+4. Google Cloud Container Registry
 
 ## Setup & Requirements ##
 
