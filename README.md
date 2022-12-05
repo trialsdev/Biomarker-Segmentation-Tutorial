@@ -14,3 +14,12 @@ The following tools are required to be installed in your local machine in order 
 
 2. <a href = "https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"> Terraform </a>
 
+## Run Code ##
+
+'''
+github clone 
+cd terraform
+terraform init
+terraform plan
+terraform apply
+'''
