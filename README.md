@@ -31,3 +31,9 @@ In order to test the code, you can move the data in the "data_bucket" to the "in
 ```
 gsutil cp gs://input_bucket/test gs://input_bucket/test.nii.gz
 ```
+
+## Destroy the infrastructure ##
+
+```
+terraform destroy
+```
