@@ -54,6 +54,16 @@ resource "google_storage_bucket" "storage_data_bucket" {
     ]
 }
 
+resource "google_storage_bucket_object" "testing_files" {
+  name = "test.nii.gz" #name of the file 
+  source = "../data/test.nii.gz"
+  bucket = local.data_bucket
+
+  depends_on = [
+    google_storage_bucket.storage_data_bucket,
+  ]
+}
+
 
 resource "google_project_service" "cloud_registry_service" {
   service = "containerregistry.googleapis.com"
@@ -70,6 +80,7 @@ resource "google_project_service" "cloud_build_service" {
 
   depends_on = [
     google_project.project,
+    google_project_iam_member.project_owner
   ]
 }
 
@@ -117,11 +128,18 @@ resource "google_cloud_run_service" "default" {
 resource "null_resource" "app_container" {
 
     provisioner "local-exec" {
-        command = "(cd ../dummy_app && ./build.sh && IMAGE_URI=${local.image_uri} ./push.sh)"
+        #command = "(cd ../dummy_app && ./build.sh && IMAGE_URI=${local.image_uri} ./push.sh)"
         #command = "docker build -t ${local.image_uri} ../dummy_app/ && docker push ${local.image_uri}"
+        #command = "cd ../dummy_app && gcloud config set project segtutorial2d8e && gcloud builds submit --tag gcr.io/segtutorial2d8e/bst-image"   
+        #command = "cd ../dummy_app && gcloud config set project segtutorial2d8e && IMAGE_URI=${local.image_name} ./build.sh"
+        
+        command = "cd ../dummy_app && gcloud config set project ${local.project} && gcloud builds submit --tag ${local.image_uri}"
     }
+
     depends_on = [
-        google_project.project
+        google_project.project,
+        google_project_service.cloud_build_service,
+        google_project_iam_member.project_owner
     ]
 }
 
@@ -130,5 +148,82 @@ resource "null_resource" "app_container" {
 
 resource "google_pubsub_topic" "default" {
     name = "bst-pubsub-topic"
+
+    depends_on = [
+      google_project_iam_member.project_owner,
+    ]
 }
-    
+
+resource "google_service_account" "sa" {
+  account_id   = "cloud-run-pubsub-invoker"
+  display_name = "Cloud Run Pub/Sub Invoker"
+
+  depends_on = [
+    google_project_iam_member.project_owner,
+    google_project_service.cloud_run_service,
+
+  ]
+}
+
+resource "google_cloud_run_service_iam_binding" "binding" {
+  location = google_cloud_run_service.default.location
+  service  = google_cloud_run_service.default.name
+  role     = "roles/run.invoker"
+  members  = ["serviceAccount:${google_service_account.sa.email}"]
+
+  depends_on = [
+    google_project_service.cloud_run_service,
+  ]
+}
+
+resource "google_project_service_identity" "pubsub_agent" {
+  provider = google-beta
+  project  = local.project_name
+  service  = "pubsub.googleapis.com"
+
+  depends_on = [
+    google_project.project,
+  ]
+}
+
+resource "google_project_iam_binding" "project_token_creator" {
+  project = local.project_name
+  role    = "roles/iam.serviceAccountTokenCreator"
+  members = ["serviceAccount:${google_project_service_identity.pubsub_agent.email}"]
+
+}
+
+resource "google_pubsub_subscription" "subscription" {
+  name  = "pubsub_subscription"
+  topic = google_pubsub_topic.default.name
+  push_config {
+    push_endpoint = google_cloud_run_service.default.status[0].url
+    oidc_token {
+      service_account_email = google_service_account.sa.email
+    }
+    attributes = {
+      x-goog-version = "v1"
+    }
+  }
+  depends_on = [google_cloud_run_service.default]
+}
+
+
+data "google_storage_project_service_account" "gcs_account" {
+  depends_on = [
+    google_project.project,
+  ]
+}
+
+resource "google_pubsub_topic_iam_binding" "binding" {
+  topic   = google_pubsub_topic.default.name
+  role    = "roles/pubsub.publisher"
+  members = ["serviceAccount:${data.google_storage_project_service_account.gcs_account.email_address}"]
+}
+
+resource "google_storage_notification" "notification" {
+  bucket         = google_storage_bucket.storage_input_bucket.name
+  payload_format = "JSON_API_V1"
+  topic          = google_pubsub_topic.default.id
+  depends_on     = [google_pubsub_topic_iam_binding.binding]
+}

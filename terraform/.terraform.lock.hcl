@@ -4,6 +4,7 @@
 provider "registry.terraform.io/hashicorp/google" {
   version = "4.44.1"
   hashes = [
+    "h1:EH0DUD1ntp8TWOuQWQoi2NZbSN+5FFgEwH8DtffslEA=",
     "h1:a7Ju1uXrlWfOCKFerwUej9KReUp78JbawOtVrOkBMwM=",
     "zh:0668252985a677707bf46e393a96ea63b58b93d730f4daf8357246f7e6dd8ba9",
     "zh:1cbfa5c7dcf02acb90718474a6b0e6af6a7c839c964270feaf55cddb537ef762",
@@ -20,10 +21,30 @@ provider "registry.terraform.io/hashicorp/google" {
   ]
 }
 
+provider "registry.terraform.io/hashicorp/google-beta" {
+  version = "4.44.1"
+  hashes = [
+    "h1:xi/k/qYjJwFEsSVUn1K74jDtx5UYESXRYUATEhA3yQo=",
+    "zh:1993bd9512f4b48b3de8faac5c9e6f82fb0597bb18028a4308e1b9d3464773be",
+    "zh:38c35a4bae7c3d26836d3a800ed3eeb48dcb2be0368322ee43c545cd1cc2a800",
+    "zh:58c80343761a8f8a5d410fe78c7f772ab963cb627afb95138ec35496a17c8742",
+    "zh:7161b97c8af746d7cce94a7e69a471d51f602a7c2dd30aab6ed2db8cdc6ee526",
+    "zh:74e21c303bc2c25ba3606bc88ecaeb2b43e59d5d428d7d3174be30fecc5cb288",
+    "zh:7caad09cadecd2b69e63452b1a09b7b3a371d7ec2bd72b339ece4c8547146a7b",
+    "zh:b27d35b93cd99a352cfa0c285602d3df24eb75341511a6d70eb6a602eeccb984",
+    "zh:bce44c67756c364bb2ea99e5e626ff05c7a6629d1a548d308161736e2b060eba",
+    "zh:bd2d8cbd4163987e3eaa48f30e6ac15d234fb2040ea1927695428aadfe5558e7",
+    "zh:e358d18f585d35fe2d688cf7d51c23f3d1ef3e0977f8037435ba316ab3dc675b",
+    "zh:f5669ce94b63ea612542a9d167108927c6bab070fac1199a11695fb2514d71d9",
+    "zh:f569b65999264a9416862bca5cd2a6177d94ccb0424f3a4ef424428912b9cb3c",
+  ]
+}
+
 provider "registry.terraform.io/hashicorp/null" {
   version = "3.2.1"
   hashes = [
     "h1:FbGfc+muBsC17Ohy5g806iuI1hQc4SIexpYCrQHQd8w=",
+    "h1:vUW21lLLsKlxtBf0QF7LKJreKxs0CM7YXGzqW1N/ODY=",
     "zh:58ed64389620cc7b82f01332e27723856422820cfd302e304b5f6c3436fb9840",
     "zh:62a5cc82c3b2ddef7ef3a6f2fedb7b9b3deff4ab7b414938b08e51d6e8be87cb",
     "zh:63cff4de03af983175a7e37e52d4bd89d990be256b16b5c7f919aff5ad485aa5",
@@ -42,6 +63,7 @@ provider "registry.terraform.io/hashicorp/null" {
 provider "registry.terraform.io/hashicorp/random" {
   version = "3.4.3"
   hashes = [
+    "h1:hXUPrH8igYBhatzatkp80RCeeUJGu9lQFDyKemOlsTo=",
     "h1:xZGZf18JjMS06pFa4NErzANI98qi59SEcBsOcS2P2yQ=",
     "zh:41c53ba47085d8261590990f8633c8906696fa0a3c4b384ff6a7ecbf84339752",
     "zh:59d98081c4475f2ad77d881c4412c5129c56214892f490adf11c7e7a5a47de9b",
