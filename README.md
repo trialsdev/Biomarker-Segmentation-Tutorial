@@ -2,7 +2,7 @@
 
 This repository contains code that helps you to create the following infrastructure in Google Cloud Platform.
 
-![classification workflow](https://user-images.githubusercontent.com/85404022/205371247-a677c4c3-1596-4b09-aebd-aa176703d24c.png)
+![classification workflow](https://user-images.githubusercontent.com/85404022/205371247-a677c4c3-1596-4b09-aebd-aa176703d24c.png) = 1000 x 700
 
 ## Setup & Requirements ##
 
