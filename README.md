@@ -1,4 +1,4 @@
-# biomarker-segmentation-tutorial #
+# Biomarker Segmentation Cloud Migration Code #
 
 This repository contains code that helps you to create the following infrastructure in Google Cloud Platform.
 
