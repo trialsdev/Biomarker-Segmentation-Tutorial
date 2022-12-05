@@ -38,6 +38,11 @@ In order to test the code, you can move the data in the "data_bucket" to the "in
 ```
 gsutil cp gs://bst_data_bucket/test gs://bst_input_bucket/test.nii.gz
 ```
+Using GCP CLI
+
+```
+gcloud storage cp gs://bst_data_bucket/test.nii.gz gs://bst_input_bucket/test.nii.gz
+```
 
 ## Destroy the infrastructure ##
 
