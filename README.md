@@ -17,7 +17,7 @@ The following tools are required to be installed in your local machine in order 
 ## Run Code ##
 
 ```
-github clone 
+github clone https://github.com/trialsdev/Biomarker-Segmentation-Tutorial.git 
 cd terraform
 terraform init
 terraform plan
