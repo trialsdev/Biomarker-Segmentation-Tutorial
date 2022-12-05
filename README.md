@@ -10,7 +10,7 @@ In order to run the code you will need a Google Cloud Platform Account with a bi
 
 The following tools are required to be installed in your local machine in order to run the code.
 
-1. <a href = "https://cloud.google.com/sdk/docs/install" target = "_blank">Google Cloud CLI </a>
+1. <a href = "https://cloud.google.com/sdk/docs/install">Google Cloud CLI </a>
 
-2. <a href = "https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli" target = "_blank"> Terraform </a>
+2. <a href = "https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"> Terraform </a>
 
