@@ -1,8 +1,8 @@
 # Biomarker Segmentation Cloud Migration Code #
 
-This repository contains code that helps you to create the following infrastructure in Google Cloud Platform.
+This repository contains code that helps you to create a medical segmentation workflow in the Google Cloud Platform (GCP). The model we are using in this example is the <a href = "https://github.com/msharrock/deepbleed">Deepbleed</a> model which is used for ICH Segmentation in the Brain. The code will create the following infrastructure in GCP. 
 
-<img src = "https://user-images.githubusercontent.com/85404022/205371247-a677c4c3-1596-4b09-aebd-aa176703d24c.png" width = 800, height = 550></img>
+<img src = "https://user-images.githubusercontent.com/85404022/205371247-a677c4c3-1596-4b09-aebd-aa176703d24c.png" width = 750, height = 500></img>
 
 ## Billable Resources ##
 
