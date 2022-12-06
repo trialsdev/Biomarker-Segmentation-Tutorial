@@ -12,9 +12,9 @@ locals {
     project = "${local.project_name}"
     region = "us-east1"
 
-    input_bucket = "bst_input_bucket_${random_id.id.hex}" #enter your input bucket name
-    output_bucket = "bst_output_bucket_${random_id.id.hex}" #enter your output bucket name
-    data_bucket = "bst_data_bucket_${random_id.id.hex}" #enter your data bucket name
+    input_bucket = "bst_input_bucket" #enter your input bucket name
+    output_bucket = "bst_output_bucket" #enter your output bucket name
+    data_bucket = "bst_data_bucket" #enter your data bucket name
 
     container_image_name = "bst-image" #enter your container image name
     image_name = "gcr.io/${local.project}/${local.container_image_name}"
