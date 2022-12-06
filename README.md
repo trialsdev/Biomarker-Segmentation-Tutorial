@@ -1,10 +1,12 @@
 # Biomarker Segmentation Cloud Migration Code #
 
-This repository contains code that helps you to create a medical segmentation workflow in the Google Cloud Platform (GCP). The model we are using in this example is the <a href = "https://github.com/msharrock/deepbleed">Deepbleed</a> model which is used for ICH Segmentation in the Brain. The code will create the following infrastructure in GCP. 
+This repository contains code that helps you to create a medical image segmentation workflow in the Google Cloud Platform (GCP). The model we are using in this example is the <a href = "https://github.com/msharrock/deepbleed">Deepbleed</a> model which is used for ICH Segmentation in the Brain. The code will create the following infrastructure in GCP. 
 
 <img src = "https://user-images.githubusercontent.com/85404022/205371247-a677c4c3-1596-4b09-aebd-aa176703d24c.png" width = 750, height = 500></img>
 
 ## Billable Resources ##
+
+The following billable resources from GCP will be used in this example.
 
 1. Google Cloud Run
 2. Google Cloud Storage
@@ -49,3 +51,8 @@ gcloud storage cp gs://bst_data_bucket/test.nii.gz gs://bst_input_bucket/test.ni
 ```
 terraform destroy
 ```
+
+## Additional Information ##
+
+
+## References & Useful Links ##
