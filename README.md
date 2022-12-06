@@ -8,10 +8,10 @@ This repository contains code that helps you to create a medical image segmentat
 
 The following billable resources from GCP will be used in this example.
 
-1. Google Cloud Run
-2. Google Cloud Storage
-3. Pub/Sub
-4. Google Cloud Container Registry
+1. <a href = "https://cloud.google.com/run">Google Cloud Run</a>
+2. <a href = "https://cloud.google.com/storage">Google Cloud Storage</a>
+3. <a href = "https://cloud.google.com/pubsub">Pub/Sub</a>
+4. <a href = "https://cloud.google.com/container-registry">Google Cloud Container Registry</a>
 
 ## Setup & Requirements ##
 
