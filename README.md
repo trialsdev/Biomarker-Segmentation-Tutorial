@@ -4,7 +4,7 @@ This repository contains code that helps you to create a medical image segmentat
 
 <img src = "https://user-images.githubusercontent.com/85404022/205371247-a677c4c3-1596-4b09-aebd-aa176703d24c.png" width = 750, height = 500></img>
 
-The GCP infrastructure expects input patient images in NIfTI <a href = "https://nifti.nimh.nih.gov/"> file format and outputs the segmented masks as a NIfTI file.
+The GCP infrastructure expects input patient images in <a href = "https://nifti.nimh.nih.gov/">NIfTI</a> file format and outputs the segmented masks as a NIfTI file.
 
 *Please note that in order to minimize the resources used in GCP, we are not using any GPU resources. If you'd like to learn how to create a docker image with GPU resources enabled, please visit the <a href = "https://github.com/msharrock/deepbleed">Deepbleed</a> model page for more information.*
 
