@@ -16,3 +16,6 @@ h5py>=2.9
 fslpy
 gast==0.2.2
 statsmodels
+google-cloud-storage 
+wheel==0.37.1 
+antspyx==0.3.3 

@@ -8,13 +8,13 @@ variable "user" {
 
 locals {
 
-    project_name = "segtutorial${random_id.id.hex}" #enter your project name
+    project_name = "biosegtutorial${random_id.id.hex}" #enter your project name
     project = "${local.project_name}"
     region = "us-east1"
 
-    input_bucket = "bst_input_bucket" #enter your input bucket name
-    output_bucket = "bst_output_bucket" #enter your output bucket name
-    data_bucket = "bst_data_bucket" #enter your data bucket name
+    input_bucket = "bs_input_bucket" #enter your input bucket name
+    output_bucket = "bs_output_bucket" #enter your output bucket name
+    data_bucket = "bs_data_bucket" #enter your data bucket name
 
     container_image_name = "bst-image" #enter your container image name
     image_name = "gcr.io/${local.project}/${local.container_image_name}"

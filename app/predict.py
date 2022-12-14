@@ -9,8 +9,7 @@ from google.cloud import storage
 import tempfile
 
 #weights path
-# weights_path = os.path.join('weights', 'weights.index')
-weights_path = os.path.join('weights.index')
+weights_path = 'weights'
 template_path = os.path.join('templates', 'scct_unsmooth_SS_0.01_128x128x128.nii.gz')
 
 #cloud storage client
@@ -25,8 +24,8 @@ def run_inference(data):
     #load template
     template = ants.image_read(template_path, pixeltype = 'float')
 
-    #get recieved file
-    image, file_name = receive_data(data)
+    #get recieved file from google cloud storage
+    image, file_name, input_bucket_name = receive_data(data)
     print('Downloaded file from input bucket')
 
     #load image
@@ -40,8 +39,8 @@ def run_inference(data):
     image = convert.nii2ants(image)
     image, transforms = register.rigid(template, image)
     image, ants_params = convert.ants2np(image)
-
-    #predict
+    
+    #generate model prediction
     prediction = model.predict(image)
     prediction = convert.np2ants(prediction, ants_params)
 
@@ -54,8 +53,14 @@ def run_inference(data):
     nib.save(prediction, "output_nifti.nii.gz")
     
     #upload data to the output bucket
-    upload_data(file_name)
+    upload_data(file_name, input_bucket_name)
     print('Uploaded file')
+
+    try:
+        os.remove("input_nifti.nii.gz")
+        os.remove("output_nifti.nii.gz")
+    except Exception as e:
+        print(e)
 
 def receive_data(data):
 
@@ -68,12 +73,12 @@ def receive_data(data):
     with open("input_nifti.nii.gz", "wb") as image_file:
         image_file.write(input_blob.download_as_bytes())
 
-    return "input_nifti.nii.gz", file_name
+    return "input_nifti.nii.gz", file_name, bucket_name
 
-def upload_data(file_name):
+def upload_data(file_name, input_bucket_name):
 
     #output bucket name
-    bucket_name = "bst_output_bucket" #use the name of the correct output bucket
+    bucket_name = input_bucket_name.replace('input', 'output') #use the name of the correct output bucket
     output_bucket = storage_client.get_bucket(bucket_name)
     #output file name
     output_file_name = f"{file_name.split('.')[0]}_predict.nii.gz"
