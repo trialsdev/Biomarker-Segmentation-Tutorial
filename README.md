@@ -25,7 +25,7 @@ In order to run the code you will need a Google Cloud Platform Account with a bi
 
 2. <a href = "https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"> Terraform </a>
 
-3. < href = "https://docs.docker.com/get-docker/"> Docker </a>
+3. <a href = "https://docs.docker.com/get-docker/"> Docker </a>
 
 ## Add credentials ##
 
