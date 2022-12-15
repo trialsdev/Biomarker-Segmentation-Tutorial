@@ -19,7 +19,7 @@ The following billable resources from GCP will be used in this example.
 
 ## Setup & Requirements ##
 
-In order to run the code you will need a Google Cloud Platform Account with a billing account. You will also need GCP command line interface, terraform and docker installed in your local machine. The following are resources on how to setup a GCP account and how to install terraform & docker locally.
+In order to run the code you will need a Google Cloud Platform Account with a billing account. You will also need GCP command line interface (CLI), terraform and docker installed in your local machine. The following are resources on how to setup a GCP account and how to install Google CLI, terraform & docker locally.
 1. <a href = "#">Google Cloud Platform</a>
 
 2. <a href = "https://cloud.google.com/sdk/docs/install">Google Cloud CLI </a>
