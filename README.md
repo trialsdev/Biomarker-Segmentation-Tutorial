@@ -44,7 +44,6 @@ variable "user" {
 
 ## Run Code ##
 
-```
 Once you have Google Cloud CLI, terraform and docker installed, follow the steps below in your local machine to run the code.
 
 Clone this repository to you local directory.
