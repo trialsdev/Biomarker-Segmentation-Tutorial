@@ -19,13 +19,14 @@ The following billable resources from GCP will be used in this example.
 
 ## Setup & Requirements ##
 
-In order to run the code you will need a Google Cloud Platform Account with a billing account. You will also need terraform and docker installed in your local machine. The following are resources on how to setup a GCP account and how to install terraform & docker locally.
+In order to run the code you will need a Google Cloud Platform Account with a billing account. You will also need GCP command line interface, terraform and docker installed in your local machine. The following are resources on how to setup a GCP account and how to install terraform & docker locally.
+1. <a href = "#">Google Cloud Platform</a>
 
-1. <a href = "https://cloud.google.com/sdk/docs/install">Google Cloud CLI </a>
+2. <a href = "https://cloud.google.com/sdk/docs/install">Google Cloud CLI </a>
 
-2. <a href = "https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"> Terraform </a>
+3. <a href = "https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"> Terraform </a>
 
-3. <a href = "https://docs.docker.com/get-docker/"> Docker </a>
+4. <a href = "https://docs.docker.com/get-docker/"> Docker </a>
 
 ## Add credentials ##
 
@@ -44,10 +45,26 @@ variable "user" {
 ## Run Code ##
 
 ```
+Once you have Google Cloud CLI, terraform and docker installed, follow the steps below in your local machine to run the code.
+
+Clone this repository to you local directory.
+```
 github clone https://github.com/trialsdev/Biomarker-Segmentation-Tutorial.git 
+```
+Change current working directory to terraform folder.
+```
 cd terraform
+```
+Initialize terraform.
+```
 terraform init
+```
+View the terraform plan for the infrastructure.
+```
 terraform plan
+```
+Create the infrastructure in GCP.
+```
 terraform apply
 ```
 
